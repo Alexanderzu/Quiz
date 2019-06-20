@@ -1,0 +1,330 @@
+
+@import reset
+@import mixin
+@import _default
+
+#page_wrapper
+	display: flex
+	align-items: center
+	justify-content: center
+	height: 100vh
+
+.startQuiz,
+.nextQuestion,
+.backToQuestion,
+.questions li.question,
+.questions li.question .responses,
+.questions li.question .responses .correct,
+.questions li.question .responses .incorrect,
+.quizResults
+	display: none
+
+.nextQuestion.checkAnswer
+	display: block
+
+ol.questions,
+ul.answers,
+ul.responses,
+ol.questions li,
+ul.answers li,
+ul.responses li
+	list-style-type: none
+
+.quizName span:first-child
+	border: 0
+	clip: rect(0 0 0 0)
+	height: 1px
+	margin: -1px
+	overflow: hidden
+	padding: 0
+	position: absolute
+	width: 1px
+
+body
+	background: $light-pink
+
+#slickQuiz
+	position: relative
+	min-height: 540px
+	box-sizing: border-box
+	margin: 0 auto
+	background-color: $light-pink
+	background-image: url("../images/bitmap.png")
+	background-size: cover
+	box-shadow: 0 30px 40px 0 rgba(133, 73, 86, 0.21), 0 0 4px 0 rgba(0, 0, 0, 0.09)
+	font-size: 16px
+	color: $black
+	font-family: 'robotoregular'
+	width: 1060px
+	@media (max-width: 1200px)
+		width: 100%
+		margin-left: 15px
+		margin-right: 15px
+		
+	a
+		text-decoration: none
+	.quizImagesStart
+		img
+			position: absolute
+			&:first-child
+				width: 93px
+				top: 50px
+				right: 320px
+				@media (max-width: 1020px)
+					top: 20px
+					right: 20%
+				@media (max-width: 860px)
+					right: 5%
+				@media (max-width: 730px)
+					right: auto
+					left: 5%
+					width: 50px
+			&:nth-child(2)
+				width: 200px
+				top: 270px
+				right: 460px
+				@media (max-width: 730px)
+					right: 50%
+					width: 35%
+					top: auto
+					bottom: 110px
+			&:last-child
+				width: 435px
+				right: 0
+				bottom: 0
+				@media (max-width: 730px)
+					width: 40%
+	.quizTitle
+		position: relative
+		max-width: 550px
+		&__label
+			position: absolute
+			right: 0
+			top: 60px
+			color: $white
+			background: $darkish-pink
+			font-size: 18px
+			padding: 6px 14px
+			@media (max-width: 730px)
+				margin-right: 20px
+			&:after
+				content: ""
+				position: absolute
+				border: 7px solid transparent
+				border-left: 7px solid $dark-rose
+				border-top: 7px solid $dark-rose
+				bottom: -14px
+				right: 0
+	.tryAgain
+		// display: none
+	.btm-main
+		color: $black
+		font-family: 'robotobold'
+		text-align: center
+		box-shadow: 0 15px 22px 0 rgba(121, 54, 68, 0.23)
+		position: absolute
+		bottom: 40px
+		left: 50px
+		background: $white
+		font-size: 20px
+		padding: 15px
+		min-width: 146px
+		transition: 0.3s ease
+		&:hover
+			box-shadow: none
+			text-decoration: none
+		&:active
+			box-shadow: 0 15px 22px 0 rgba(121, 54, 68, 0.13)
+	b
+		font-family: 'robotobold'
+	.quizDescription
+		margin-left: 50px
+	.quizName
+		font-size: 34px
+		line-height: 1.18
+		font-family: 'robotoblack'
+		padding: 110px 0px 16px 50px
+	.questions
+		padding: 25px 25px 0px 230px
+		@media (max-width: 992px)
+			padding: 25px 25px 0px 25px
+			margin-bottom: 60px
+		h3
+			font-size: 26px
+			line-height: 1.38
+			max-width: 500px
+			margin-bottom: 30px
+			font-family: 'robotomedium'
+	.question
+		.nextQuestion.checkAnswer
+			font-size: 20px
+			font-family: 'robotobold'
+			color: $black
+			position: absolute
+			bottom: 40px
+			display: none !important
+			text-decoration: none
+			&:after
+				content: url(../images/arrow.svg)
+				position: absolute
+				margin-left: 10px
+				margin-top: 3px
+				transition: 0.3s ease
+			&:hover
+				&:after
+					margin-left: 15px
+			&:active
+				&:after
+					margin-left: 18px
+		.checkAnswer
+			display: none
+		&.incorrectResponse
+			.nextQuestion.checkAnswer
+				display: block !important
+		
+	.questionCount
+		margin-bottom: 16px
+	.correctResponse
+		.incorrect
+			display: none
+	.answertext
+		display: none
+		max-width: 500px
+		margin-top: 14px
+	.answers
+		.answer
+			input
+				display: none
+			label
+				display: inline-block
+				padding: 14px 25px
+				background: $white
+				font-size: 16px
+				cursor: pointer
+				margin-bottom: 16px
+				border: solid 2px $mid-pink
+				transition: 0.3s ease
+				&:hover
+					opacity: 0.9
+			&.correct
+				label
+					border: solid 2px $green
+					color: $green
+					font-family: 'robotobold'
+			&.incorrect
+				label
+					border: solid 2px $darkish-pink
+					color: $darkish-pink
+					font-family: 'robotobold'
+	
+	.checkAnswerList
+		li
+			display: none  !important
+			&.classOne
+				display: block !important
+				.answertext
+					display: block
+					line-height: 23px
+				&.correct
+					display: block !important
+				&.incorrect
+					display: block !important
+
+	.quizResults
+		padding: 30px 30px 40px 230px
+		@media (max-width: 992px)
+			padding: 25px 25px 0px 25px
+		.quizScore
+			margin-bottom: 60px
+		.quizLevel
+			font-size: 36px
+			font-family: 'robotoblack'
+			line-height: 1.17
+			max-width: 320px
+			margin-bottom: 60px
+		.tryAgain
+			font-size: 20px
+			font-family: 'robotobold'
+			color: $black
+			text-decoration: none
+			position: absolute
+			bottom: 40px
+			&:after
+				content: url(../images/refresh-arrow.svg)
+				display: inline-block
+				width: 20px
+				height: 20px
+				position: absolute
+				margin-left: 10px
+				margin-top: 5px
+				transition: 0.3s ease
+			&:hover
+				&:after
+					transform: rotate(90deg)
+		.social
+			display: flex
+			position: relative
+			z-index: 2
+			li
+			
+				margin-right: 15px
+				
+				a
+					display: flex
+					height: 50px
+					background: $white
+					padding: 12px 15px
+					box-shadow: 0 15px 22px 0 rgba(121, 54, 68, 0.23)
+					transition: 0.3s ease
+
+					&:hover
+						box-shadow: none
+					&:before
+						display: inline-block
+
+					&.fb
+						font-size: 17px
+						color: #4267b2
+						font-family: 'robotobold'
+						line-height: 26px
+						&:before
+							content: url(../images/fb.svg)
+							margin-right: 10px
+					&.vk
+						&:before
+							content: url(../images/vk.svg)
+							margin-top: 4px
+					&.tw
+						&:before
+							content: url(../images/tw.svg)
+		.quizResultsImg
+			img
+				position: absolute
+				right: 0
+				top: 20px
+				@media (max-width: 600px)
+					width: 200px !important
+					top: 40% !important
+					right: 0 !important
+				@media (max-width: 375px)
+					width: 120px !important
+					top: 60% !important
+				&.imgLevel__0
+					width: 520px
+				&.imgLevel__1
+					width: 510px
+					top: 60px
+				&.imgLevel__2
+					width: 340px
+				&.imgLevel__3
+					width: 320px
+					top: 120px
+				&.imgLevel__4
+					width: 320px
+					top: 60px
+					right: 60px
+				&.imgLevel__5
+					width: 510px
+					top: 60px
+		
+	
