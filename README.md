@@ -1,6 +1,8 @@
 # Quiz
 
-![Иллюстрация к проекту](https://github.com/Alexanderzu/Quiz/master/app/images/image.png)
+![Иллюстрация к проекту](https://github.com/Alexanderzu/Quiz/raw/master/app/images/image.png)
+
+[DEMO](http://a1zu.com/quiz/)
 
 Stack:
  - Gulp 4.0
