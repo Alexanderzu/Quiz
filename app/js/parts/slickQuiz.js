@@ -10,6 +10,7 @@
  * @license MIT
  */
 
+
 (function($){
     $.slickQuiz = function(element, options) {
         var plugin   = this,
@@ -49,8 +50,7 @@
                     checkAnswer: function () {
                         
                     },
-                    nextQuestion: function () {
-                        checkAnswer().click();
+                    nextQuestion: function () {``
                     },
                     backToQuestion: function () {},
                     completeQuiz: function () {}
@@ -334,6 +334,7 @@
                         if (plugin.config.completeQuizText && count == questionCount) {
                             nextText = plugin.config.completeQuizText;
                         }
+                        
 
                         // If we're not showing responses per question, show next question button and make it check the answer too
                         if (!plugin.config.perQuestionResponseMessaging) {
