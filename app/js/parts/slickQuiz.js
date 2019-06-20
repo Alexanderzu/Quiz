@@ -651,7 +651,7 @@
                         levelRank = plugin.method.calculateLevel(score),
                         levelText = $.isNumeric(levelRank) ? levels[levelRank] : '';
 
-                        var imgHtml = $('<img class="imgLevel__' + levelRank +  '" src="../images/level' + levelRank + ".png" +  '">');
+                        var imgHtml = $('<img class="imgLevel__' + levelRank +  '" src="images/level' + levelRank + ".png" +  '">');
 
                     $(_quizLevel + ' span').html(levelText);
                     $(".quizResultsImg").html(imgHtml);
